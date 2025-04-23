@@ -19,7 +19,13 @@ if (app.Environment.IsDevelopment())
     //    c.SwaggerEndpoint("/openapi/v1.json", "My API V1");
     //});
 
-    app.MapScalarApiReference();
+    app.MapScalarApiReference(options =>
+    {
+        options
+            .WithTitle("Demp API")
+            .WithTheme(ScalarTheme.Mars)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+    });
 }
 
 app.UseHttpsRedirection();
